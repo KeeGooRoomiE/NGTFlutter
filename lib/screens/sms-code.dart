@@ -31,7 +31,7 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
   void initState() {
     super.initState();
     sendCode(widget.phone);
-    _start = 60;
+    _start = 30;
     _startTimer();
   }
 
@@ -55,7 +55,7 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
   void _resetTimer() {
     setState(() {
       resend = false;
-      _start = 60;
+      _start = 30;
     });
     _startTimer();
   }
@@ -118,7 +118,7 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
                   autofocus: true,
                   keyboardType: TextInputType.number,
                   length: 4,
-                  itemSize: 60,
+                  itemSize: MediaQuery.of(context).size.width * 0.14,
                   textStyle:
                   const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   margin: const EdgeInsets.all(12),

@@ -57,6 +57,7 @@ class _LkProfileState extends State<LkProfile> {
       slivers: [
         SliverAppBar(
           title: const Text('Личный кабинет'),
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -68,11 +69,6 @@ class _LkProfileState extends State<LkProfile> {
               end: Alignment.centerRight,
             )),
           ),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back)),
         ),
         SliverList(
             delegate: SliverChildListDelegate([

@@ -125,7 +125,6 @@ class HotFullPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
-
     return Scaffold(
       body: Column(
         children: [
@@ -141,23 +140,7 @@ class HotFullPage extends StatelessWidget {
                 end: Alignment.centerRight,
               ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Transform.rotate(
-                  angle: 180 * math.pi / 180,
-                  child: IconButton(
-                    icon: const Icon(
-                      Icons.arrow_right_alt,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ),
-              ],
-            ),
+            
           ),
 
           Expanded(

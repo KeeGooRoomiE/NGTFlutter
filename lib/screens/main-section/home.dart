@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
       if (index == 2 || index == 0) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 20, left: 20),
+          padding: const EdgeInsets.only(bottom: 10, left: 20),
           child: Row(
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -135,13 +135,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Icon(Icons.person, color: isDark ? Colors.white : Colors.white,),
               ),
               const SizedBox(
-                width: 20,
+                width: 10,
               ),
-              Text(
-                "${name.capitalize()} ${surname.capitalize()}",
-                textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+              Container(
+                width: MediaQuery.of(context).size.width * .7,
+                height: MediaQuery.of(context).size.height * .8,
+              child:   Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${name.capitalize()} ${surname.capitalize()}",
+                      textAlign: TextAlign.center,
+                      style:
+                      const TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                      softWrap: true,
+                    )
+                  ],
+                )
               )
             ],
           ),
@@ -157,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return Column(children: [
           _pageIndex != 4
               ? Container(
-                  height: MediaQuery.of(context).size.height * .2,
+                  height: MediaQuery.of(context).size.height * .17,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                     colors: !isDark
@@ -170,43 +180,44 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 15, right: 15),
                     child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              GestureDetector(
-                                child: !isDark
-                                    ? SvgPicture.asset(
-                                        'icons/notification.svg',
-                                        color: Colors.transparent,
-                                      )
-                                    : SvgPicture.asset(
-                                        'icons/notif-white-true.svg',
-                                        color: Colors.transparent),
-                                onTap: () {
-                                  setState(() {
-                                    _pageType = 2;
-                                  });
-                                },
-                              ),
-                              const SizedBox(
-                                width: 20,
-                              ),
-                              GestureDetector(
-                                child: !isDark
-                                    ? SvgPicture.asset('icons/actions.svg')
-                                    : SvgPicture.asset('icons/list-white.svg'),
-                                onTap: () {
-                                  setState(() {
-                                    _pageType = 3;
-                                  });
-                                },
-                              )
-                            ],
-                          ),
-                          Row(
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.end,
+                          //   children: [
+                          //     GestureDetector(
+                          //       child: !isDark
+                          //           ? SvgPicture.asset(
+                          //               'icons/notification.svg',
+                          //               color: Colors.transparent,
+                          //             )
+                          //           : SvgPicture.asset(
+                          //               'icons/notif-white-true.svg',
+                          //               color: Colors.transparent),
+                          //       onTap: () {
+                          //         setState(() {
+                          //           _pageType = 2;
+                          //         });
+                          //       },
+                          //     ),
+                          //     const SizedBox(
+                          //       width: 20,
+                          //     ),
+                          //     GestureDetector(
+                          //       child: !isDark
+                          //           ? SvgPicture.asset('icons/actions.svg')
+                          //           : SvgPicture.asset('icons/list-white.svg'),
+                          //       onTap: () {
+                          //         setState(() {
+                          //           _pageType = 3;
+                          //         });
+                          //       },
+                          //     )
+                          //   ],
+                          // ),
+                          Expanded(child: Row(
                             children: [appBarContent],
+                          )
                           )
                         ]),
                   ),

@@ -56,6 +56,7 @@ class _LKPageState extends State<LKPage> {
       body: CustomScrollView(scrollDirection: Axis.vertical, slivers: [
         SliverAppBar(
           title: const Text('Личный кабинет'),
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -67,11 +68,6 @@ class _LKPageState extends State<LKPage> {
               end: Alignment.centerRight,
             )),
           ),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(Icons.arrow_back)),
         ),
         SliverToBoxAdapter(
             child: ListTile(
