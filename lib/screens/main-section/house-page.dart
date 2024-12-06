@@ -568,7 +568,7 @@ class _HousePageState extends State<HousePage> {
               height: MediaQuery.of(context).size.height * .01,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

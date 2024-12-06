@@ -100,6 +100,10 @@ Widget buildHistoryItem(BuildContext context, String date, String address, Strin
     decoration: BoxDecoration(
       color: isDark ? Colors.grey[850] : Colors.white,
       borderRadius: BorderRadius.circular(15),
+      border: Border.all(
+        color: const Color(0xFFA4A7A3),
+        width: 1,
+      ),
       boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.05),
@@ -119,12 +123,18 @@ Widget buildHistoryItem(BuildContext context, String date, String address, Strin
               children: [
                 Text(
                   date,
-                  style: TextStyle(fontWeight: FontWeight.bold, color: isDark ? Colors.white70 : Colors.black87),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: isDark ? Colors.white70 : Colors.black87,
+                  ),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   address,
-                  style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -140,12 +150,18 @@ Widget buildHistoryItem(BuildContext context, String date, String address, Strin
               children: [
                 Text(
                   productName,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: isDark ? Colors.white : Colors.black87),
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: isDark ? Colors.white : Colors.black87,
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   'Количество: $quantity',
-                  style: TextStyle(color: isDark ? Colors.white : Colors.black54),
+                  style: TextStyle(
+                    color: isDark ? Colors.white : Colors.black54,
+                  ),
                 ),
               ],
             ),
@@ -153,7 +169,11 @@ Widget buildHistoryItem(BuildContext context, String date, String address, Strin
               padding: const EdgeInsets.only(right: 10),
               child: Text(
                 '=${quantity.toString()}₽',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: isDark ? Colors.white : Colors.black87),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  color: isDark ? Colors.white : Colors.black87,
+                ),
               ),
             ),
           ],
@@ -162,4 +182,5 @@ Widget buildHistoryItem(BuildContext context, String date, String address, Strin
     ),
   );
 }
+
 

@@ -112,7 +112,8 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
                     ),
                   ),
                 ),
-                VerificationCode(
+                Center(
+                 child:  VerificationCode(
                   fullBorder: true,
                   digitsOnly: true,
                   autofocus: true,
@@ -120,8 +121,8 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
                   length: 4,
                   itemSize: MediaQuery.of(context).size.width * 0.14,
                   textStyle:
-                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  margin: const EdgeInsets.all(12),
+                  const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                  margin: const EdgeInsets.all(8),
                   onCompleted: (String value) {
                     setState(() {
                       _code = value;
@@ -134,9 +135,10 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
                     if (!_onEditing) FocusScope.of(context).unfocus();
                   },
                 ),
+                ),
                 Center(
                   child: mainButton(
-                      MediaQuery.of(context).size.width * .5, 40.0, () async {
+                      MediaQuery.of(context).size.width * .6, 40.0, () async {
                     if (resend) {
                       _resetTimer();
                       resendCode(widget.phone).then((value) => showDialog(
@@ -151,7 +153,8 @@ class _SmsCodeVerificationScreenState extends State<SmsCodeVerificationScreen> {
                                       Navigator.of(context).pop(),
                                   child: const Text("Ok"))
                             ],
-                          )));
+                          )
+                      ));
                     }
                   }, 'Отправить смс-код ($_start)', !resend),
                 ),

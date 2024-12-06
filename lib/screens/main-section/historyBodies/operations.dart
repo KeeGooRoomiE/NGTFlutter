@@ -106,6 +106,7 @@ class _OperationsHistoryBodyState extends State<OperationsHistoryBody> {
               "date": date,
             },
           );
+          SizedBox(height: 10);
         }
 
         newHistoryWidgets.sort((a, b) => (b['date'] as DateTime).compareTo(a['date']));
@@ -139,7 +140,8 @@ class _OperationsHistoryBodyState extends State<OperationsHistoryBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Container(
+    child:  Expanded(
       child: Column(
         children: [
           Expanded(
@@ -150,7 +152,10 @@ class _OperationsHistoryBodyState extends State<OperationsHistoryBody> {
                 if (index == historyWidgets.length) {
                   return const Center(child: CircularProgressIndicator());
                 }
-                return historyWidgets[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: historyWidgets[index],
+                );
               },
             ),
           ),
@@ -158,6 +163,7 @@ class _OperationsHistoryBodyState extends State<OperationsHistoryBody> {
             const Center(child: Text("Нет данных для отображения")),
         ],
       ),
+    )
     );
   }
 
@@ -186,13 +192,26 @@ class HistoryItem extends StatelessWidget {
         this.isBurned = false});
 
   @override
+
   Widget build(BuildContext context) {
     bool isDark = Provider.of<DarkThemeProvider>(context).darkTheme;
 
     return Container(
-      padding: const EdgeInsets.only(left: 10, bottom: 10),
-      decoration:
-      BoxDecoration(color: isDark ? const Color(0xFF343c40) : Colors.white),
+      padding: const EdgeInsets.only(left: 10, bottom: 10, ),
+      decoration: BoxDecoration(
+
+        color: isDark ? const Color(0xFF343c40) : Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: isDark
+                ? Color(0xFFA4a7a3).withOpacity(0.2)
+                : Colors.black.withOpacity(0.05), 
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
       child: Column(
         children: [
           Row(
@@ -203,26 +222,28 @@ class HistoryItem extends StatelessWidget {
                 children: [
                   Text(
                     productName,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: isDark ? Colors.white : Colors.black,
+                    ),
+                  ),
+                  Text(
+                    date,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: isDark ? Colors.white70 : Colors.black87,
+                    ),
                   ),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: pointsContainer(points, isDark, isBurned:isBurned),
+                child: pointsContainer(points, isDark, isBurned: isBurned),
               ),
             ],
           ),
-          Align(
-            alignment: Alignment.bottomLeft,  // Выравнивание даты в левый нижний угол
-            child: Text(
-              date,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: isDark ? Colors.white70 : Colors.black87,
-              ),
-            ),
-          ),
+
         ],
       ),
     );
