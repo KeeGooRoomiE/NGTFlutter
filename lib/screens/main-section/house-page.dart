@@ -130,9 +130,9 @@ class _HousePageState extends State<HousePage> {
     setState(() {
       isLoading = false;
       infoBlocksList = [
-        InfoBlock(value: '$weekPoints', description: 'Доступно до конца недели', isDark: isDark),
-        InfoBlock(value: '$monthPoints', description: 'Доступно до конца месяца', isDark: isDark),
-        InfoBlock(value: '$expiredPoints', description: 'Сгорело за 60 дней', isDark: isDark),
+        InfoBlock(value: '$weekPoints', description: 'Доступно до конца недели', isDark: isDark,context: context),
+        InfoBlock(value: '$monthPoints', description: 'Доступно до конца месяца', isDark: isDark,context: context),
+        InfoBlock(value: '$expiredPoints', description: 'Сгорело за 60 дней', isDark: isDark,context: context),
       ];
     });
   }
@@ -567,8 +567,7 @@ class _HousePageState extends State<HousePage> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .01,
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
+            Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -588,13 +587,11 @@ Widget InfoBlock({
   required String value,
   required String description,
   required bool isDark,
+  required BuildContext context,
 }) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8), // Увеличение отступов для большей высоты
-    constraints: BoxConstraints(
-      minWidth: 80,
-      maxWidth: 125,
-    ),
+    padding: EdgeInsets.symmetric(vertical: 12),
+    width: MediaQuery.of(context).size.width * .28,
     decoration: BoxDecoration(
       color: isDark ? Color(0xFF505050) : Colors.white,
       borderRadius: BorderRadius.circular(10),
@@ -613,19 +610,19 @@ Widget InfoBlock({
         Text(
           value,
           style: TextStyle(
-            fontSize: 28, // Увеличен размер шрифта для значения
+            fontSize: 28,
             fontWeight: FontWeight.bold,
             color: isDark ? Colors.white : Colors.black,
           ),
         ),
-        SizedBox(height: 8), // Больший отступ между значением и описанием
+        SizedBox(height: 8),
         Text(
           description,
           textAlign: TextAlign.center,
-          maxLines: 2, // Установка ограничения на количество строк для описания
-          overflow: TextOverflow.ellipsis, // Указать обрезку, если текст слишком длинный
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 16, // Чуть крупнее текст для лучшей читабельности
+            fontSize: 16,
             color: isDark ? Colors.grey[300] : Colors.grey[700],
           ),
         ),

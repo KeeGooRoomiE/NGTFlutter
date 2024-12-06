@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gasoilt/themes/manager.dart';
 import 'package:provider/provider.dart';
 import './screens/welcome.dart';
@@ -7,6 +8,13 @@ import 'dart:io';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Отключить автоповорот экрана
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   await Future.delayed(const Duration(milliseconds: 300));
   runApp(MyApp());
 }
